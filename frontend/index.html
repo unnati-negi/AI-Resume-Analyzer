@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>HireLens — AI Resume Analyzer</title>
+
+    <meta
+        name="description"
+        content="HireLens is an AI-powered resume analyzer and job matching platform."
+    >
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <link
+        rel="stylesheet"
+        href="/style.css"
+    >
+</head>
+
+
+<body>
+
+    <!-- Background Effects -->
+
+    <div class="background-glow glow-one"></div>
+    <div class="background-glow glow-two"></div>
+
+
+    <!-- Main Application -->
+
+    <div class="app-shell">
+
+
+        <!-- =========================
+             SIDEBAR
+        ========================== -->
+
+        <aside class="sidebar">
+
+            <!-- Brand -->
+
+            <div class="brand">
+
+                <div class="brand-icon">
+                    H
+                </div>
+
+                <div class="brand-text">
+
+                    <h2>
+                        Hire<span>Lens</span>
+                    </h2>
+
+                    <p>
+                        Career intelligence
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- Navigation -->
+
+            <nav class="sidebar-nav">
+
+                <p class="nav-label">
+                    WORKSPACE
+                </p>
+
+                <a
+                    href="#"
+                    class="nav-item active"
+                >
+                    <span class="nav-icon">⌂</span>
+                    Dashboard
+                </a>
+
+
+                <a
+                    href="#resume-section"
+                    class="nav-item"
+                >
+                    <span class="nav-icon">▣</span>
+                    Resume
+                </a>
+
+
+                <a
+                    href="#job-section"
+                    class="nav-item"
+                >
+                    <span class="nav-icon">◫</span>
+                    Job Description
+                </a>
+
+
+                <a
+                    href="#results-section"
+                    class="nav-item"
+                >
+                    <span class="nav-icon">◈</span>
+                    Analysis
+                </a>
+
+
+                <p class="nav-label second-label">
+                    TOOLS
+                </p>
+
+
+                <a
+                    href="#how-it-works"
+                    class="nav-item"
+                >
+                    <span class="nav-icon">?</span>
+                    How it works
+                </a>
+
+            </nav>
+
+
+            <!-- Sidebar Bottom -->
+
+            <div class="sidebar-bottom">
+
+                <div class="pro-card">
+
+                    <div class="pro-icon">
+                        ✦
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            AI-powered matching
+                        </strong>
+
+                        <p>
+                            Find the skills that matter.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </aside>
+
+
+        <!-- =========================
+             MAIN CONTENT
+        ========================== -->
+
+        <main class="main-content">
+
+
+            <!-- Top Bar -->
+
+            <header class="topbar">
+
+                <div class="breadcrumb">
+
+                    Workspace
+
+                    <span>
+                        /
+                    </span>
+
+                    Resume Analyzer
+
+                </div>
+
+
+                <div class="topbar-right">
+
+                    <div class="status">
+
+                        <span class="status-dot"></span>
+
+                        System ready
+
+                    </div>
+
+
+                    <div class="avatar">
+                        U
+                    </div>
+
+                </div>
+
+            </header>
+
+
+            <!-- =========================
+                 HERO
+            ========================== -->
+
+            <section class="hero">
+
+                <div class="hero-content">
+
+                    <div class="eyebrow">
+
+                        <span>
+                            ✦
+                        </span>
+
+                        AI CAREER INTELLIGENCE
+
+                    </div>
+
+
+                    <h1>
+
+                        Turn your resume into
+
+                        <span>
+                            career insight.
+                        </span>
+
+                    </h1>
+
+
+                    <p>
+
+                        Upload your resume and job description to discover
+                        your strengths, missing skills, and compatibility
+                        with the role.
+
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <!-- =========================
+                 WORKSPACE
+            ========================== -->
+
+            <section
+                class="workspace-grid"
+                id="resume-section"
+            >
+
+
+                <!-- Resume Upload -->
+
+                <div class="card resume-card">
+
+                    <div class="card-header">
+
+                        <div class="card-heading">
+
+                            <div class="card-icon mint">
+                                ↑
+                            </div>
+
+                            <div class="card-title">
+
+                                <h2>
+                                    Your resume
+                                </h2>
+
+                                <p>
+                                    Upload a PDF to extract your experience
+                                    and skills.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <span class="required">
+                            PDF only
+                        </span>
+
+                    </div>
+
+
+                    <!-- Drop Zone -->
+
+                    <div
+                        class="drop-zone"
+                        id="dropZone"
+                    >
+
+                        <input
+                            type="file"
+                            id="resumeFile"
+                            accept=".pdf,application/pdf"
+                            hidden
+                        >
+
+
+                        <div class="upload-illustration">
+
+                            <div class="upload-circle">
+                                ↑
+                            </div>
+
+                        </div>
+
+
+                        <h3>
+                            Drag & drop your resume
+                        </h3>
+
+
+                        <p>
+
+                            or
+
+                            <button
+                                type="button"
+                                id="browseButton"
+                                class="browse-link"
+                            >
+                                browse files
+                            </button>
+
+                        </p>
+
+
+                        <span class="upload-hint">
+
+                            Maximum file size: 10 MB
+
+                        </span>
+
+                    </div>
+
+
+                    <!-- File Preview -->
+
+                    <div
+                        class="file-preview hidden"
+                        id="filePreview"
+                    >
+
+                        <div class="pdf-icon">
+                            PDF
+                        </div>
+
+
+                        <div class="file-details">
+
+                            <strong id="fileName">
+                                resume.pdf
+                            </strong>
+
+                            <span id="fileSize">
+                                0 KB
+                            </span>
+
+                        </div>
+
+
+                        <button
+                            type="button"
+                            class="remove-file"
+                            id="removeFile"
+                        >
+                            ×
+                        </button>
+
+                    </div>
+
+
+                    <!-- Upload Status -->
+
+                    <div
+                        class="upload-status hidden"
+                        id="uploadStatus"
+                    >
+
+                        <div class="status-loader"></div>
+
+                        <span>
+                            Extracting resume text...
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =========================
+                     JOB DESCRIPTION
+                ========================== -->
+
+                <div
+                    class="card job-card"
+                    id="job-section"
+                >
+
+                    <div class="card-header">
+
+                        <div class="card-heading">
+
+                            <div class="card-icon blue">
+                                JD
+                            </div>
+
+
+                            <div class="card-title">
+
+                                <h2>
+                                    Job description
+                                </h2>
+
+                                <p>
+                                    Paste the role you're applying for.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <span class="optional">
+                            Optional for now
+                        </span>
+
+                    </div>
+
+
+                    <div class="textarea-wrapper">
+
+                        <textarea
+                            id="jobDescription"
+                            maxlength="5000"
+                            placeholder="Paste the job description here...
+
+Example:
+We are looking for a Python developer with experience in Flask, SQL, REST APIs and machine learning..."
+                        ></textarea>
+
+
+                        <div class="textarea-footer">
+
+                            <span>
+                                Add the complete job description
+                            </span>
+
+                            <span id="charCount">
+                                0 / 5000
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="job-tips">
+
+                        <span>
+                            ✦
+                        </span>
+
+                        <p>
+
+                            A detailed job description gives the AI more
+                            context for accurate matching.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =========================
+                 ANALYZE BUTTON
+            ========================== -->
+
+            <section class="analyze-section">
+
+                <button
+                    type="button"
+                    class="analyze-button"
+                    id="analyzeButton"
+                    disabled
+                >
+
+                    <span class="button-icon">
+                        ✦
+                    </span>
+
+
+                    <span>
+                        Analyze Resume
+                    </span>
+
+
+                    <span class="arrow">
+                        →
+                    </span>
+
+                </button>
+
+
+                <p>
+                    Upload a resume to begin analysis
+                </p>
+
+            </section>
+
+
+            <!-- =========================
+                 RESULTS
+            ========================== -->
+
+            <section
+                class="results-section hidden"
+                id="results-section"
+            >
+
+                <div class="results-header">
+
+                    <div>
+
+                        <div class="eyebrow">
+
+                            <span>
+                                ✦
+                            </span>
+
+                            EXTRACTION COMPLETE
+
+                        </div>
+
+
+                        <h2>
+                            Resume content
+                        </h2>
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        class="secondary-button"
+                        id="copyButton"
+                    >
+                        Copy text
+                    </button>
+
+                </div>
+
+
+                <div class="results-card">
+
+                    <div class="results-toolbar">
+
+                        <div class="toolbar-left">
+
+                            <span class="live-dot"></span>
+
+                            <span>
+                                Extracted text
+                            </span>
+
+                        </div>
+
+
+                        <button
+                            type="button"
+                            class="download-button"
+                            id="downloadButton"
+                        >
+                            ↓ Download
+                        </button>
+
+                    </div>
+
+
+                    <div class="text-preview">
+
+                        <pre id="extractedText"></pre>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =========================
+                 HOW IT WORKS
+            ========================== -->
+
+            <section
+                class="how-section"
+                id="how-it-works"
+            >
+
+                <div class="section-heading">
+
+                    <div>
+
+                        <div class="eyebrow">
+
+                            <span>
+                                ✦
+                            </span>
+
+                            HOW IT WORKS
+
+                        </div>
+
+
+                        <h2>
+                            From resume to insight.
+                        </h2>
+
+                    </div>
+
+                </div>
+
+
+                <div class="steps">
+
+
+                    <!-- Step 1 -->
+
+                    <div class="step">
+
+                        <div class="step-number">
+                            01
+                        </div>
+
+                        <h3>
+                            Upload
+                        </h3>
+
+                        <p>
+                            Upload your resume as a PDF.
+                        </p>
+
+                    </div>
+
+
+                    <div class="step-line"></div>
+
+
+                    <!-- Step 2 -->
+
+                    <div class="step">
+
+                        <div class="step-number">
+                            02
+                        </div>
+
+                        <h3>
+                            Understand
+                        </h3>
+
+                        <p>
+                            NLP extracts skills and experience.
+                        </p>
+
+                    </div>
+
+
+                    <div class="step-line"></div>
+
+
+                    <!-- Step 3 -->
+
+                    <div class="step">
+
+                        <div class="step-number">
+                            03
+                        </div>
+
+                        <h3>
+                            Match
+                        </h3>
+
+                        <p>
+                            Compare your profile with the job.
+                        </p>
+
+                    </div>
+
+
+                    <div class="step-line"></div>
+
+
+                    <!-- Step 4 -->
+
+                    <div class="step">
+
+                        <div class="step-number">
+                            04
+                        </div>
+
+                        <h3>
+                            Improve
+                        </h3>
+
+                        <p>
+                            Get actionable recommendations.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =========================
+                 FOOTER
+            ========================== -->
+
+            <footer>
+
+                <span>
+                    HireLens
+                </span>
+
+            </footer>
+
+        </main>
+
+    </div>
+
+
+    <!-- =========================
+         TOAST
+    ========================== -->
+
+    <div
+        class="toast"
+        id="toast"
+    >
+
+        <span>
+            ✓
+        </span>
+
+        <p id="toastMessage">
+            Success
+        </p>
+
+    </div>
+
+
+    <!-- JavaScript -->
+
+    <script src="/script.js"></script>
+
+</body>
+
+</html>
