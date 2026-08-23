@@ -9,39 +9,62 @@
    DOM ELEMENTS
    ========================================================= */
 
-const fileInput = document.getElementById("resumeFile");
+const fileInput =
+    document.getElementById("resumeFile");
 
-const dropZone = document.getElementById("dropZone");
+const dropZone =
+    document.getElementById("dropZone");
 
-const browseButton = document.getElementById("browseButton");
+const browseButton =
+    document.getElementById("browseButton");
 
-const filePreview = document.getElementById("filePreview");
+const filePreview =
+    document.getElementById("filePreview");
 
-const fileName = document.getElementById("fileName");
+const fileName =
+    document.getElementById("fileName");
 
-const fileSize = document.getElementById("fileSize");
+const fileSize =
+    document.getElementById("fileSize");
 
-const removeFileButton = document.getElementById("removeFile");
+const removeFileButton =
+    document.getElementById("removeFile");
 
-const uploadStatus = document.getElementById("uploadStatus");
+const uploadStatus =
+    document.getElementById("uploadStatus");
 
-const analyzeButton = document.getElementById("analyzeButton");
+const analyzeButton =
+    document.getElementById("analyzeButton");
 
-const resultSection = document.getElementById("results-section");
+const resultSection =
+    document.getElementById("results-section");
 
-const extractedText = document.getElementById("extractedText");
+const extractedText =
+    document.getElementById("extractedText");
 
-const copyButton = document.getElementById("copyButton");
+const skillsContainer =
+    document.getElementById("skillsContainer");
 
-const downloadButton = document.getElementById("downloadButton");
+const skillCount =
+    document.getElementById("skillCount");
 
-const jobDescription = document.getElementById("jobDescription");
+const copyButton =
+    document.getElementById("copyButton");
 
-const charCount = document.getElementById("charCount");
+const downloadButton =
+    document.getElementById("downloadButton");
 
-const toast = document.getElementById("toast");
+const jobDescription =
+    document.getElementById("jobDescription");
 
-const toastMessage = document.getElementById("toastMessage");
+const charCount =
+    document.getElementById("charCount");
+
+const toast =
+    document.getElementById("toast");
+
+const toastMessage =
+    document.getElementById("toastMessage");
 
 
 /* =========================================================
@@ -58,6 +81,10 @@ let extractedResumeText = "";
    ========================================================= */
 
 function showToast(message) {
+
+    if (!toast || !toastMessage) {
+        return;
+    }
 
     toastMessage.textContent = message;
 
@@ -115,19 +142,24 @@ function validateFile(file) {
 
     if (!isPDF) {
 
-        showToast("Please select a PDF file.");
+        showToast(
+            "Please select a PDF file."
+        );
 
         return false;
 
     }
 
 
-    const maxSize = 10 * 1024 * 1024;
+    const maxSize =
+        10 * 1024 * 1024;
 
 
     if (file.size > maxSize) {
 
-        showToast("File must be smaller than 10 MB.");
+        showToast(
+            "File must be smaller than 10 MB."
+        );
 
         return false;
 
@@ -154,22 +186,44 @@ function selectFile(file) {
     selectedFile = file;
 
 
-    fileName.textContent = file.name;
+    fileName.textContent =
+        file.name;
 
-    fileSize.textContent = formatFileSize(file.size);
+
+    fileSize.textContent =
+        formatFileSize(file.size);
 
 
-    filePreview.classList.remove("hidden");
+    filePreview.classList.remove(
+        "hidden"
+    );
 
-    uploadStatus.classList.add("hidden");
 
-    resultSection.classList.add("hidden");
+    uploadStatus.classList.add(
+        "hidden"
+    );
+
+
+    resultSection.classList.add(
+        "hidden"
+    );
+
+
+    extractedResumeText = "";
+
+    extractedText.textContent = "";
+
+    skillsContainer.innerHTML = "";
+
+    skillCount.textContent = "0";
 
 
     analyzeButton.disabled = false;
 
 
-    showToast("Resume selected.");
+    showToast(
+        "Resume selected."
+    );
 }
 
 
@@ -177,399 +231,648 @@ function selectFile(file) {
    BROWSE BUTTON
    ========================================================= */
 
-browseButton.addEventListener("click", (event) => {
+browseButton.addEventListener(
+    "click",
+    (event) => {
 
-    event.stopPropagation();
+        event.stopPropagation();
 
-    fileInput.click();
+        fileInput.click();
 
-});
+    }
+);
 
 
 /* =========================================================
    DROP ZONE CLICK
    ========================================================= */
 
-dropZone.addEventListener("click", () => {
+dropZone.addEventListener(
+    "click",
+    () => {
 
-    fileInput.click();
+        fileInput.click();
 
-});
+    }
+);
 
 
 /* =========================================================
    FILE INPUT
    ========================================================= */
 
-fileInput.addEventListener("change", () => {
+fileInput.addEventListener(
+    "change",
+    () => {
 
-    const file = fileInput.files[0];
+        const file =
+            fileInput.files[0];
 
-    if (file) {
 
-        selectFile(file);
+        if (file) {
+
+            selectFile(file);
+
+        }
 
     }
-
-});
+);
 
 
 /* =========================================================
    DRAG OVER
    ========================================================= */
 
-dropZone.addEventListener("dragover", (event) => {
+dropZone.addEventListener(
+    "dragover",
+    (event) => {
 
-    event.preventDefault();
+        event.preventDefault();
 
-    dropZone.classList.add("drag-over");
+        dropZone.classList.add(
+            "drag-over"
+        );
 
-});
+    }
+);
 
 
 /* =========================================================
    DRAG LEAVE
    ========================================================= */
 
-dropZone.addEventListener("dragleave", () => {
+dropZone.addEventListener(
+    "dragleave",
+    () => {
 
-    dropZone.classList.remove("drag-over");
+        dropZone.classList.remove(
+            "drag-over"
+        );
 
-});
+    }
+);
 
 
 /* =========================================================
    DROP
    ========================================================= */
 
-dropZone.addEventListener("drop", (event) => {
+dropZone.addEventListener(
+    "drop",
+    (event) => {
 
-    event.preventDefault();
+        event.preventDefault();
 
-    dropZone.classList.remove("drag-over");
+        dropZone.classList.remove(
+            "drag-over"
+        );
 
 
-    const file = event.dataTransfer.files[0];
+        const file =
+            event.dataTransfer.files[0];
 
 
-    if (file) {
+        if (file) {
 
-        selectFile(file);
+            selectFile(file);
+
+        }
 
     }
-
-});
+);
 
 
 /* =========================================================
    REMOVE FILE
    ========================================================= */
 
-removeFileButton.addEventListener("click", (event) => {
+removeFileButton.addEventListener(
+    "click",
+    (event) => {
 
-    event.stopPropagation();
-
-
-    selectedFile = null;
-
-    fileInput.value = "";
+        event.stopPropagation();
 
 
-    filePreview.classList.add("hidden");
+        selectedFile = null;
 
-    uploadStatus.classList.add("hidden");
-
-    resultSection.classList.add("hidden");
+        fileInput.value = "";
 
 
-    extractedResumeText = "";
+        filePreview.classList.add(
+            "hidden"
+        );
 
 
-    extractedText.textContent = "";
+        uploadStatus.classList.add(
+            "hidden"
+        );
 
 
-    analyzeButton.disabled = true;
+        resultSection.classList.add(
+            "hidden"
+        );
 
 
-    showToast("Resume removed.");
+        extractedResumeText = "";
 
-});
+
+        extractedText.textContent = "";
+
+        skillsContainer.innerHTML = "";
+
+        skillCount.textContent = "0";
+
+
+        analyzeButton.disabled = true;
+
+
+        showToast(
+            "Resume removed."
+        );
+
+    }
+);
 
 
 /* =========================================================
    JOB DESCRIPTION COUNTER
    ========================================================= */
 
-jobDescription.addEventListener("input", () => {
+jobDescription.addEventListener(
+    "input",
+    () => {
 
-    const length = jobDescription.value.length;
+        const length =
+            jobDescription.value.length;
 
-    charCount.textContent = `${length} / 5000`;
 
-});
+        charCount.textContent =
+            `${length} / 5000`;
+
+    }
+);
 
 
 /* =========================================================
    ANALYZE RESUME
    ========================================================= */
 
-analyzeButton.addEventListener("click", async () => {
+analyzeButton.addEventListener(
+    "click",
+    async () => {
+
+        /* -------------------------------------------------
+           Check file
+        ------------------------------------------------- */
+
+        if (!selectedFile) {
+
+            showToast(
+                "Please upload a resume first."
+            );
+
+            return;
+
+        }
 
 
-    /* Check file */
+        /* -------------------------------------------------
+           Create form data
+        ------------------------------------------------- */
 
-    if (!selectedFile) {
-
-        showToast("Please upload a resume first.");
-
-        return;
-
-    }
+        const formData =
+            new FormData();
 
 
-    /* Create form data */
-
-    const formData = new FormData();
-
-    formData.append("resume", selectedFile);
-
-
-    /* Disable button */
-
-    analyzeButton.disabled = true;
+        formData.append(
+            "resume",
+            selectedFile
+        );
 
 
-    /* Show loading */
+        /* -------------------------------------------------
+           Disable button
+        ------------------------------------------------- */
 
-    uploadStatus.classList.remove("hidden");
-
-
-    uploadStatus.innerHTML = `
-
-        <div class="status-loader"></div>
-
-        <span>
-            Extracting resume text...
-        </span>
-
-    `;
+        analyzeButton.disabled = true;
 
 
-    try {
+        /* -------------------------------------------------
+           Show loading
+        ------------------------------------------------- */
+
+        uploadStatus.classList.remove(
+            "hidden"
+        );
 
 
-        /* Send request to Flask */
+        uploadStatus.innerHTML = `
 
-        const response = await fetch(
-            "/upload-resume",
-            {
-                method: "POST",
-                body: formData
+            <div class="status-loader"></div>
+
+            <span>
+                Analyzing your resume...
+            </span>
+
+        `;
+
+
+        try {
+
+            /* =============================================
+               SEND REQUEST TO FLASK
+            ============================================= */
+
+            console.log(
+                "Sending resume to Flask:",
+                selectedFile.name
+            );
+
+
+            const response =
+                await fetch(
+                    "/upload-resume",
+                    {
+                        method: "POST",
+                        body: formData
+                    }
+                );
+
+
+            console.log(
+                "Flask response status:",
+                response.status
+            );
+
+
+            /* =============================================
+               READ RESPONSE
+            ============================================= */
+
+            const responseText =
+                await response.text();
+
+
+            console.log(
+                "Flask response:",
+                responseText
+            );
+
+
+            let data;
+
+
+            try {
+
+                data =
+                    JSON.parse(responseText);
+
+            } catch (jsonError) {
+
+                throw new Error(
+                    "The server returned an invalid response."
+                );
+
             }
-        );
 
 
-        /* Convert response to JSON */
+            /* =============================================
+               HANDLE SERVER ERROR
+            ============================================= */
 
-        const data = await response.json();
+            if (!response.ok || data.error) {
+
+                throw new Error(
+                    data.error ||
+                    "Something went wrong while analyzing the resume."
+                );
+
+            }
 
 
-        /* Handle errors */
+            /* =============================================
+               GET EXTRACTED RESUME TEXT
+               
+               IMPORTANT:
+               This MUST happen BEFORE checking
+               whether the text is empty.
+            ============================================= */
 
-        if (!response.ok || data.error) {
+            extractedResumeText =
+                data.text || "";
 
-            throw new Error(
-                data.error ||
-                "Something went wrong."
+
+            /* =============================================
+               CHECK EMPTY TEXT
+            ============================================= */
+
+            if (
+                !extractedResumeText.trim()
+            ) {
+
+                throw new Error(
+                    "No readable text was found in this PDF."
+                );
+
+            }
+
+
+            /* =============================================
+               DISPLAY EXTRACTED TEXT
+            ============================================= */
+
+            extractedText.textContent =
+                extractedResumeText;
+
+
+            /* =============================================
+               GET EXTRACTED SKILLS
+            ============================================= */
+
+            const skills =
+                Array.isArray(data.skills)
+                    ? data.skills
+                    : [];
+
+
+            /* =============================================
+               DISPLAY SKILL COUNT
+            ============================================= */
+
+            skillCount.textContent =
+                skills.length;
+
+
+            /* =============================================
+               CLEAR PREVIOUS SKILLS
+            ============================================= */
+
+            skillsContainer.innerHTML =
+                "";
+
+
+            /* =============================================
+               DISPLAY SKILLS
+            ============================================= */
+
+            if (skills.length === 0) {
+
+                skillsContainer.innerHTML = `
+
+                    <div class="no-skills">
+
+                        No known skills were detected.
+
+                    </div>
+
+                `;
+
+            } else {
+
+                skills.forEach(
+                    (skill) => {
+
+                        const skillTag =
+                            document.createElement(
+                                "span"
+                            );
+
+
+                        skillTag.className =
+                            "skill-tag";
+
+
+                        skillTag.textContent =
+                            skill;
+
+
+                        skillsContainer.appendChild(
+                            skillTag
+                        );
+
+                    }
+                );
+
+            }
+
+
+            /* =============================================
+               SHOW RESULTS
+            ============================================= */
+
+            resultSection.classList.remove(
+                "hidden"
+            );
+
+
+            /* =============================================
+               SUCCESS STATUS
+            ============================================= */
+
+            uploadStatus.innerHTML = `
+
+                <span style="color: #16a77b;">
+                    ✓
+                </span>
+
+                <span>
+                    Resume analyzed successfully.
+                </span>
+
+            `;
+
+
+            /* =============================================
+               SUCCESS TOAST
+            ============================================= */
+
+            showToast(
+                "Resume analyzed successfully."
+            );
+
+
+            /* =============================================
+               SCROLL TO RESULTS
+            ============================================= */
+
+            setTimeout(
+                () => {
+
+                    resultSection.scrollIntoView({
+                        behavior: "smooth",
+                        block: "start"
+                    });
+
+                },
+                200
             );
 
         }
 
 
-        /* Get extracted text */
+        /* =============================================
+           ERROR
+        ============================================= */
 
-        extractedResumeText = data.text || "";
+        catch (error) {
+
+            console.error(
+                "HIRELENS ERROR:",
+                error
+            );
 
 
-        /* Check empty text */
+            uploadStatus.innerHTML = `
 
-        if (!extractedResumeText.trim()) {
+                <span style="color: #e74c3c;">
+                    !
+                </span>
 
-            throw new Error(
-                "No readable text was found in this PDF."
+                <span>
+                    ${error.message}
+                </span>
+
+            `;
+
+
+            showToast(
+                error.message
             );
 
         }
 
 
-        /* Display extracted text */
+        /* =============================================
+           ENABLE BUTTON
+        ============================================= */
 
-        extractedText.textContent =
-            extractedResumeText;
+        finally {
 
+            analyzeButton.disabled =
+                false;
 
-        resultSection.classList.remove("hidden");
-
-
-        /* Success status */
-
-        uploadStatus.innerHTML = `
-
-            <span style="color: #16a77b;">
-                ✓
-            </span>
-
-            <span>
-                Resume extracted successfully.
-            </span>
-
-        `;
-
-
-        showToast(
-            "Resume analyzed successfully."
-        );
-
-
-        /* Scroll to results */
-
-        setTimeout(() => {
-
-            resultSection.scrollIntoView({
-                behavior: "smooth",
-                block: "start"
-            });
-
-        }, 200);
-
-
-    } catch (error) {
-
-
-        /* Error status */
-
-        uploadStatus.innerHTML = `
-
-            <span style="color: #e74c3c;">
-                !
-            </span>
-
-            <span>
-                ${error.message}
-            </span>
-
-        `;
-
-
-        showToast(
-            "Could not process the resume."
-        );
-
-    } finally {
-
-
-        /* Enable button again */
-
-        analyzeButton.disabled = false;
+        }
 
     }
-
-});
+);
 
 
 /* =========================================================
    COPY EXTRACTED TEXT
    ========================================================= */
 
-copyButton.addEventListener("click", async () => {
+copyButton.addEventListener(
+    "click",
+    async () => {
+
+        if (!extractedResumeText) {
+
+            showToast(
+                "No extracted text available."
+            );
+
+            return;
+
+        }
 
 
-    if (!extractedResumeText) {
+        try {
 
-        showToast(
-            "No extracted text available."
-        );
+            await navigator.clipboard.writeText(
+                extractedResumeText
+            );
 
-        return;
+
+            showToast(
+                "Resume text copied."
+            );
+
+        }
+
+
+        catch (error) {
+
+            console.error(
+                "Copy error:",
+                error
+            );
+
+
+            showToast(
+                "Could not copy text."
+            );
+
+        }
 
     }
-
-
-    try {
-
-        await navigator.clipboard.writeText(
-            extractedResumeText
-        );
-
-
-        showToast(
-            "Resume text copied."
-        );
-
-
-    } catch (error) {
-
-        showToast(
-            "Could not copy text."
-        );
-
-    }
-
-});
+);
 
 
 /* =========================================================
    DOWNLOAD EXTRACTED TEXT
    ========================================================= */
 
-downloadButton.addEventListener("click", () => {
+downloadButton.addEventListener(
+    "click",
+    () => {
+
+        if (!extractedResumeText) {
+
+            showToast(
+                "No extracted text available."
+            );
+
+            return;
+
+        }
 
 
-    if (!extractedResumeText) {
+        const blob =
+            new Blob(
+                [extractedResumeText],
+                {
+                    type: "text/plain"
+                }
+            );
 
-        showToast(
-            "No extracted text available."
+
+        const url =
+            URL.createObjectURL(blob);
+
+
+        const link =
+            document.createElement("a");
+
+
+        link.href =
+            url;
+
+
+        link.download =
+            "extracted_resume.txt";
+
+
+        document.body.appendChild(
+            link
         );
 
-        return;
+
+        link.click();
+
+
+        document.body.removeChild(
+            link
+        );
+
+
+        URL.revokeObjectURL(
+            url
+        );
+
+
+        showToast(
+            "Text file downloaded."
+        );
 
     }
-
-
-    const blob = new Blob(
-        [extractedResumeText],
-        {
-            type: "text/plain"
-        }
-    );
-
-
-    const url =
-        URL.createObjectURL(blob);
-
-
-    const link =
-        document.createElement("a");
-
-
-    link.href = url;
-
-    link.download =
-        "extracted_resume.txt";
-
-
-    document.body.appendChild(link);
-
-    link.click();
-
-    document.body.removeChild(link);
-
-
-    URL.revokeObjectURL(url);
-
-
-    showToast(
-        "Text file downloaded."
-    );
-
-});
+);

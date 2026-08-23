@@ -531,81 +531,167 @@ We are looking for a Python developer with experience in Flask, SQL, REST APIs a
                  RESULTS
             ========================== -->
 
-            <section
-                class="results-section hidden"
-                id="results-section"
+          <!-- =========================
+     RESULTS
+========================== -->
+
+<section
+    class="results-section hidden"
+    id="results-section"
+>
+
+    <div class="results-header">
+
+        <div>
+
+            <div class="eyebrow">
+
+                <span>✦</span>
+
+                AI ANALYSIS COMPLETE
+
+            </div>
+
+            <h2>
+                Resume analysis
+            </h2>
+
+        </div>
+
+        <button
+            type="button"
+            class="secondary-button"
+            id="copyButton"
+        >
+            Copy text
+        </button>
+
+    </div>
+
+
+    <!-- =========================
+         ANALYSIS SUMMARY
+    ========================== -->
+
+    <div class="analysis-summary">
+
+        <div class="summary-card">
+
+            <div class="summary-icon">
+                ✦
+            </div>
+
+            <div>
+
+                <span>
+                    Skills detected
+                </span>
+
+                <strong id="skillCount">
+                    0
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <div class="summary-card">
+
+            <div class="summary-icon blue-summary">
+                ✓
+            </div>
+
+            <div>
+
+                <span>
+                    Resume status
+                </span>
+
+                <strong>
+                    Analyzed
+                </strong>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         EXTRACTED SKILLS
+    ========================== -->
+
+    <div class="skills-card">
+
+        <div class="skills-header">
+
+            <div>
+
+                <h3>
+                    Skills detected
+                </h3>
+
+                <p>
+                    Technical skills identified from your resume.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div
+            class="skills-container"
+            id="skillsContainer"
+        >
+
+            <!-- Skills will appear here -->
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         EXTRACTED TEXT
+    ========================== -->
+
+    <div class="results-card">
+
+        <div class="results-toolbar">
+
+            <div class="toolbar-left">
+
+                <span class="live-dot"></span>
+
+                <span>
+                    Extracted resume text
+                </span>
+
+            </div>
+
+            <button
+                type="button"
+                class="download-button"
+                id="downloadButton"
             >
+                ↓ Download
+            </button>
 
-                <div class="results-header">
-
-                    <div>
-
-                        <div class="eyebrow">
-
-                            <span>
-                                ✦
-                            </span>
-
-                            EXTRACTION COMPLETE
-
-                        </div>
+        </div>
 
 
-                        <h2>
-                            Resume content
-                        </h2>
+        <div class="text-preview">
 
-                    </div>
+            <pre id="extractedText"></pre>
 
+        </div>
 
-                    <button
-                        type="button"
-                        class="secondary-button"
-                        id="copyButton"
-                    >
-                        Copy text
-                    </button>
+    </div>
 
-                </div>
-
-
-                <div class="results-card">
-
-                    <div class="results-toolbar">
-
-                        <div class="toolbar-left">
-
-                            <span class="live-dot"></span>
-
-                            <span>
-                                Extracted text
-                            </span>
-
-                        </div>
-
-
-                        <button
-                            type="button"
-                            class="download-button"
-                            id="downloadButton"
-                        >
-                            ↓ Download
-                        </button>
-
-                    </div>
-
-
-                    <div class="text-preview">
-
-                        <pre id="extractedText"></pre>
-
-                    </div>
-
-                </div>
-
-            </section>
-
-
+</section>
             <!-- =========================
                  HOW IT WORKS
             ========================== -->
