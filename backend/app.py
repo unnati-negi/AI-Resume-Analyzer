@@ -1,6 +1,7 @@
 from flask import Flask, request, jsonify, send_from_directory
 from services.resume_parser import extract_text_from_pdf
 from nlp.skill_extractor import extract_skills
+from nlp.job_analyzer import analyze_job_description
 
 import os
 from werkzeug.utils import secure_filename
@@ -119,7 +120,111 @@ def upload_resume():
             "error": "No file selected."
         }), 400
 
+# =========================================================
+# JOB DESCRIPTION ANALYSIS
+# =========================================================
 
+@app.route(
+    "/analyze-job",
+    methods=["POST"]
+)
+def analyze_job():
+
+    print("\n==============================")
+    print("JOB DESCRIPTION REQUEST")
+    print("==============================")
+
+
+    # -----------------------------------------------------
+    # Get JSON data
+    # -----------------------------------------------------
+
+    data = request.get_json()
+
+
+    if not data:
+
+        return jsonify({
+            "error": "No job description provided."
+        }), 400
+
+
+    # -----------------------------------------------------
+    # Get job description
+    # -----------------------------------------------------
+
+    job_description = data.get(
+        "job_description",
+        ""
+    )
+
+
+    # -----------------------------------------------------
+    # Validate job description
+    # -----------------------------------------------------
+
+    if not job_description.strip():
+
+        return jsonify({
+            "error": "Please enter a job description."
+        }), 400
+
+
+    # -----------------------------------------------------
+    # Analyze job description
+    # -----------------------------------------------------
+
+    try:
+
+        result = analyze_job_description(
+            job_description
+        )
+
+
+        print(
+            "Job skills found:",
+            result["skills"]
+        )
+
+
+        # -------------------------------------------------
+        # Return result
+        # -------------------------------------------------
+
+        return jsonify({
+
+            "message":
+                "Job description analyzed successfully.",
+
+            "text":
+                result["text"],
+
+            "skills":
+                result["skills"],
+
+            "skill_count":
+                result["skill_count"],
+
+            "sentences":
+                result["sentences"]
+
+        })
+
+
+    except Exception as error:
+
+        print(
+            "Job analysis error:",
+            repr(error)
+        )
+
+
+        return jsonify({
+
+            "error":
+                f"Could not analyze job description: {str(error)}"
+
+        }), 500
     # -----------------------------------------------------
     # Check extension
     # -----------------------------------------------------

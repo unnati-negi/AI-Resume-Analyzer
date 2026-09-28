@@ -2,74 +2,114 @@
    HIRELENS
    AI Resume Analyzer
    Frontend JavaScript
-   ========================================================= */
+========================================================= */
 
 
 /* =========================================================
    DOM ELEMENTS
-   ========================================================= */
+========================================================= */
 
 const fileInput =
     document.getElementById("resumeFile");
 
+
 const dropZone =
     document.getElementById("dropZone");
+
 
 const browseButton =
     document.getElementById("browseButton");
 
+
 const filePreview =
     document.getElementById("filePreview");
+
 
 const fileName =
     document.getElementById("fileName");
 
+
 const fileSize =
     document.getElementById("fileSize");
+
 
 const removeFileButton =
     document.getElementById("removeFile");
 
+
 const uploadStatus =
     document.getElementById("uploadStatus");
+
 
 const analyzeButton =
     document.getElementById("analyzeButton");
 
+
 const resultSection =
     document.getElementById("results-section");
+
 
 const extractedText =
     document.getElementById("extractedText");
 
+
 const skillsContainer =
     document.getElementById("skillsContainer");
+
 
 const skillCount =
     document.getElementById("skillCount");
 
+
 const copyButton =
     document.getElementById("copyButton");
+
 
 const downloadButton =
     document.getElementById("downloadButton");
 
+
 const jobDescription =
     document.getElementById("jobDescription");
+
 
 const charCount =
     document.getElementById("charCount");
 
+
+const jobAnalyzeButton =
+    document.getElementById("jobAnalyzeButton");
+
+
+const jobResults =
+    document.getElementById("jobResults");
+
+
+const jobSkillsContainer =
+    document.getElementById(
+        "jobSkillsContainer"
+    );
+
+
+const jobSkillCount =
+    document.getElementById(
+        "jobSkillCount"
+    );
+
+
 const toast =
     document.getElementById("toast");
 
+
 const toastMessage =
-    document.getElementById("toastMessage");
+    document.getElementById(
+        "toastMessage"
+    );
 
 
 /* =========================================================
    STATE
-   ========================================================= */
+========================================================= */
 
 let selectedFile = null;
 
@@ -78,29 +118,43 @@ let extractedResumeText = "";
 
 /* =========================================================
    TOAST
-   ========================================================= */
+========================================================= */
 
 function showToast(message) {
 
     if (!toast || !toastMessage) {
+
         return;
+
     }
 
-    toastMessage.textContent = message;
 
-    toast.classList.add("show");
+    toastMessage.textContent =
+        message;
 
-    setTimeout(() => {
 
-        toast.classList.remove("show");
+    toast.classList.add(
+        "show"
+    );
 
-    }, 3000);
+
+    setTimeout(
+        () => {
+
+            toast.classList.remove(
+                "show"
+            );
+
+        },
+        3000
+    );
+
 }
 
 
 /* =========================================================
    FILE SIZE
-   ========================================================= */
+========================================================= */
 
 function formatFileSize(bytes) {
 
@@ -111,20 +165,29 @@ function formatFileSize(bytes) {
     }
 
 
-    if (bytes < 1024 * 1024) {
+    if (
+        bytes <
+        1024 * 1024
+    ) {
 
-        return `${(bytes / 1024).toFixed(1)} KB`;
+        return `${(
+            bytes / 1024
+        ).toFixed(1)} KB`;
 
     }
 
 
-    return `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
+    return `${(
+        bytes /
+        (1024 * 1024)
+    ).toFixed(1)} MB`;
+
 }
 
 
 /* =========================================================
    FILE VALIDATION
-   ========================================================= */
+========================================================= */
 
 function validateFile(file) {
 
@@ -136,8 +199,11 @@ function validateFile(file) {
 
 
     const isPDF =
-        file.type === "application/pdf" ||
-        file.name.toLowerCase().endsWith(".pdf");
+        file.type ===
+            "application/pdf" ||
+        file.name
+            .toLowerCase()
+            .endsWith(".pdf");
 
 
     if (!isPDF) {
@@ -155,7 +221,10 @@ function validateFile(file) {
         10 * 1024 * 1024;
 
 
-    if (file.size > maxSize) {
+    if (
+        file.size >
+        maxSize
+    ) {
 
         showToast(
             "File must be smaller than 10 MB."
@@ -167,23 +236,27 @@ function validateFile(file) {
 
 
     return true;
+
 }
 
 
 /* =========================================================
    SELECT FILE
-   ========================================================= */
+========================================================= */
 
 function selectFile(file) {
 
-    if (!validateFile(file)) {
+    if (
+        !validateFile(file)
+    ) {
 
         return;
 
     }
 
 
-    selectedFile = file;
+    selectedFile =
+        file;
 
 
     fileName.textContent =
@@ -191,7 +264,9 @@ function selectFile(file) {
 
 
     fileSize.textContent =
-        formatFileSize(file.size);
+        formatFileSize(
+            file.size
+        );
 
 
     filePreview.classList.remove(
@@ -209,27 +284,36 @@ function selectFile(file) {
     );
 
 
-    extractedResumeText = "";
-
-    extractedText.textContent = "";
-
-    skillsContainer.innerHTML = "";
-
-    skillCount.textContent = "0";
+    extractedResumeText =
+        "";
 
 
-    analyzeButton.disabled = false;
+    extractedText.textContent =
+        "";
+
+
+    skillsContainer.innerHTML =
+        "";
+
+
+    skillCount.textContent =
+        "0";
+
+
+    analyzeButton.disabled =
+        false;
 
 
     showToast(
         "Resume selected."
     );
+
 }
 
 
 /* =========================================================
    BROWSE BUTTON
-   ========================================================= */
+========================================================= */
 
 browseButton.addEventListener(
     "click",
@@ -245,7 +329,7 @@ browseButton.addEventListener(
 
 /* =========================================================
    DROP ZONE CLICK
-   ========================================================= */
+========================================================= */
 
 dropZone.addEventListener(
     "click",
@@ -259,7 +343,7 @@ dropZone.addEventListener(
 
 /* =========================================================
    FILE INPUT
-   ========================================================= */
+========================================================= */
 
 fileInput.addEventListener(
     "change",
@@ -281,13 +365,14 @@ fileInput.addEventListener(
 
 /* =========================================================
    DRAG OVER
-   ========================================================= */
+========================================================= */
 
 dropZone.addEventListener(
     "dragover",
     (event) => {
 
         event.preventDefault();
+
 
         dropZone.classList.add(
             "drag-over"
@@ -299,7 +384,7 @@ dropZone.addEventListener(
 
 /* =========================================================
    DRAG LEAVE
-   ========================================================= */
+========================================================= */
 
 dropZone.addEventListener(
     "dragleave",
@@ -315,7 +400,7 @@ dropZone.addEventListener(
 
 /* =========================================================
    DROP
-   ========================================================= */
+========================================================= */
 
 dropZone.addEventListener(
     "drop",
@@ -323,13 +408,15 @@ dropZone.addEventListener(
 
         event.preventDefault();
 
+
         dropZone.classList.remove(
             "drag-over"
         );
 
 
         const file =
-            event.dataTransfer.files[0];
+            event.dataTransfer
+                .files[0];
 
 
         if (file) {
@@ -344,7 +431,7 @@ dropZone.addEventListener(
 
 /* =========================================================
    REMOVE FILE
-   ========================================================= */
+========================================================= */
 
 removeFileButton.addEventListener(
     "click",
@@ -353,9 +440,12 @@ removeFileButton.addEventListener(
         event.stopPropagation();
 
 
-        selectedFile = null;
+        selectedFile =
+            null;
 
-        fileInput.value = "";
+
+        fileInput.value =
+            "";
 
 
         filePreview.classList.add(
@@ -373,17 +463,24 @@ removeFileButton.addEventListener(
         );
 
 
-        extractedResumeText = "";
+        extractedResumeText =
+            "";
 
 
-        extractedText.textContent = "";
-
-        skillsContainer.innerHTML = "";
-
-        skillCount.textContent = "0";
+        extractedText.textContent =
+            "";
 
 
-        analyzeButton.disabled = true;
+        skillsContainer.innerHTML =
+            "";
+
+
+        skillCount.textContent =
+            "0";
+
+
+        analyzeButton.disabled =
+            true;
 
 
         showToast(
@@ -396,14 +493,16 @@ removeFileButton.addEventListener(
 
 /* =========================================================
    JOB DESCRIPTION COUNTER
-   ========================================================= */
+========================================================= */
 
 jobDescription.addEventListener(
     "input",
     () => {
 
         const length =
-            jobDescription.value.length;
+            jobDescription
+                .value
+                .length;
 
 
         charCount.textContent =
@@ -415,7 +514,7 @@ jobDescription.addEventListener(
 
 /* =========================================================
    ANALYZE RESUME
-   ========================================================= */
+========================================================= */
 
 analyzeButton.addEventListener(
     "click",
@@ -437,7 +536,7 @@ analyzeButton.addEventListener(
 
 
         /* -------------------------------------------------
-           Create form data
+           Form data
         ------------------------------------------------- */
 
         const formData =
@@ -454,11 +553,12 @@ analyzeButton.addEventListener(
            Disable button
         ------------------------------------------------- */
 
-        analyzeButton.disabled = true;
+        analyzeButton.disabled =
+            true;
 
 
         /* -------------------------------------------------
-           Show loading
+           Loading
         ------------------------------------------------- */
 
         uploadStatus.classList.remove(
@@ -479,15 +579,15 @@ analyzeButton.addEventListener(
 
         try {
 
-            /* =============================================
-               SEND REQUEST TO FLASK
-            ============================================= */
-
             console.log(
                 "Sending resume to Flask:",
                 selectedFile.name
             );
 
+
+            /* =============================================
+               SEND TO FLASK
+            ============================================= */
 
             const response =
                 await fetch(
@@ -500,7 +600,7 @@ analyzeButton.addEventListener(
 
 
             console.log(
-                "Flask response status:",
+                "Resume API status:",
                 response.status
             );
 
@@ -514,7 +614,7 @@ analyzeButton.addEventListener(
 
 
             console.log(
-                "Flask response:",
+                "Resume API response:",
                 responseText
             );
 
@@ -525,9 +625,13 @@ analyzeButton.addEventListener(
             try {
 
                 data =
-                    JSON.parse(responseText);
+                    JSON.parse(
+                        responseText
+                    );
 
-            } catch (jsonError) {
+            }
+
+            catch (error) {
 
                 throw new Error(
                     "The server returned an invalid response."
@@ -537,25 +641,24 @@ analyzeButton.addEventListener(
 
 
             /* =============================================
-               HANDLE SERVER ERROR
+               SERVER ERROR
             ============================================= */
 
-            if (!response.ok || data.error) {
+            if (
+                !response.ok ||
+                data.error
+            ) {
 
                 throw new Error(
                     data.error ||
-                    "Something went wrong while analyzing the resume."
+                    "Could not process the resume."
                 );
 
             }
 
 
             /* =============================================
-               GET EXTRACTED RESUME TEXT
-               
-               IMPORTANT:
-               This MUST happen BEFORE checking
-               whether the text is empty.
+               GET RESUME TEXT
             ============================================= */
 
             extractedResumeText =
@@ -563,11 +666,12 @@ analyzeButton.addEventListener(
 
 
             /* =============================================
-               CHECK EMPTY TEXT
+               CHECK TEXT
             ============================================= */
 
             if (
-                !extractedResumeText.trim()
+                !extractedResumeText
+                    .trim()
             ) {
 
                 throw new Error(
@@ -578,7 +682,7 @@ analyzeButton.addEventListener(
 
 
             /* =============================================
-               DISPLAY EXTRACTED TEXT
+               DISPLAY TEXT
             ============================================= */
 
             extractedText.textContent =
@@ -586,17 +690,19 @@ analyzeButton.addEventListener(
 
 
             /* =============================================
-               GET EXTRACTED SKILLS
+               GET SKILLS
             ============================================= */
 
             const skills =
-                Array.isArray(data.skills)
+                Array.isArray(
+                    data.skills
+                )
                     ? data.skills
                     : [];
 
 
             /* =============================================
-               DISPLAY SKILL COUNT
+               SKILL COUNT
             ============================================= */
 
             skillCount.textContent =
@@ -604,7 +710,7 @@ analyzeButton.addEventListener(
 
 
             /* =============================================
-               CLEAR PREVIOUS SKILLS
+               CLEAR OLD SKILLS
             ============================================= */
 
             skillsContainer.innerHTML =
@@ -615,7 +721,9 @@ analyzeButton.addEventListener(
                DISPLAY SKILLS
             ============================================= */
 
-            if (skills.length === 0) {
+            if (
+                skills.length === 0
+            ) {
 
                 skillsContainer.innerHTML = `
 
@@ -627,27 +735,29 @@ analyzeButton.addEventListener(
 
                 `;
 
-            } else {
+            }
+
+            else {
 
                 skills.forEach(
                     (skill) => {
 
-                        const skillTag =
+                        const tag =
                             document.createElement(
                                 "span"
                             );
 
 
-                        skillTag.className =
+                        tag.className =
                             "skill-tag";
 
 
-                        skillTag.textContent =
+                        tag.textContent =
                             skill;
 
 
                         skillsContainer.appendChild(
-                            skillTag
+                            tag
                         );
 
                     }
@@ -666,7 +776,7 @@ analyzeButton.addEventListener(
 
 
             /* =============================================
-               SUCCESS STATUS
+               SUCCESS
             ============================================= */
 
             uploadStatus.innerHTML = `
@@ -682,17 +792,13 @@ analyzeButton.addEventListener(
             `;
 
 
-            /* =============================================
-               SUCCESS TOAST
-            ============================================= */
-
             showToast(
                 "Resume analyzed successfully."
             );
 
 
             /* =============================================
-               SCROLL TO RESULTS
+               SCROLL
             ============================================= */
 
             setTimeout(
@@ -710,14 +816,10 @@ analyzeButton.addEventListener(
         }
 
 
-        /* =============================================
-           ERROR
-        ============================================= */
-
         catch (error) {
 
             console.error(
-                "HIRELENS ERROR:",
+                "HIRELENS RESUME ERROR:",
                 error
             );
 
@@ -742,10 +844,6 @@ analyzeButton.addEventListener(
         }
 
 
-        /* =============================================
-           ENABLE BUTTON
-        ============================================= */
-
         finally {
 
             analyzeButton.disabled =
@@ -758,14 +856,292 @@ analyzeButton.addEventListener(
 
 
 /* =========================================================
+   ANALYZE JOB DESCRIPTION
+========================================================= */
+
+jobAnalyzeButton.addEventListener(
+    "click",
+    async () => {
+
+        /* -------------------------------------------------
+           Get description
+        ------------------------------------------------- */
+
+        const description =
+            jobDescription
+                .value
+                .trim();
+
+
+        /* -------------------------------------------------
+           Validate
+        ------------------------------------------------- */
+
+        if (!description) {
+
+            showToast(
+                "Please enter a job description first."
+            );
+
+            return;
+
+        }
+
+
+        /* -------------------------------------------------
+           Disable button
+        ------------------------------------------------- */
+
+        jobAnalyzeButton.disabled =
+            true;
+
+
+        jobAnalyzeButton.innerHTML =
+            "Analyzing...";
+
+
+        try {
+
+            console.log(
+                "Sending job description to Flask..."
+            );
+
+
+            /* =============================================
+               SEND JOB DESCRIPTION
+            ============================================= */
+
+            const response =
+                await fetch(
+                    "/analyze-job",
+                    {
+                        method: "POST",
+
+                        headers: {
+                            "Content-Type":
+                                "application/json"
+                        },
+
+                        body:
+                            JSON.stringify({
+                                job_description:
+                                    description
+                            })
+
+                    }
+                );
+
+
+            console.log(
+                "Job API status:",
+                response.status
+            );
+
+
+            /* =============================================
+               READ RESPONSE
+            ============================================= */
+
+            const responseText =
+                await response.text();
+
+
+            console.log(
+                "Job API response:",
+                responseText
+            );
+
+
+            let data;
+
+
+            try {
+
+                data =
+                    JSON.parse(
+                        responseText
+                    );
+
+            }
+
+            catch (error) {
+
+                throw new Error(
+                    "The server returned an invalid response."
+                );
+
+            }
+
+
+            /* =============================================
+               SERVER ERROR
+            ============================================= */
+
+            if (
+                !response.ok ||
+                data.error
+            ) {
+
+                throw new Error(
+                    data.error ||
+                    "Could not analyze job description."
+                );
+
+            }
+
+
+            /* =============================================
+               GET SKILLS
+            ============================================= */
+
+            const skills =
+                Array.isArray(
+                    data.skills
+                )
+                    ? data.skills
+                    : [];
+
+
+            /* =============================================
+               UPDATE COUNT
+            ============================================= */
+
+            jobSkillCount.textContent =
+                skills.length;
+
+
+            /* =============================================
+               CLEAR OLD SKILLS
+            ============================================= */
+
+            jobSkillsContainer.innerHTML =
+                "";
+
+
+            /* =============================================
+               DISPLAY SKILLS
+            ============================================= */
+
+            if (
+                skills.length === 0
+            ) {
+
+                jobSkillsContainer.innerHTML = `
+
+                    <div class="no-job-skills">
+
+                        No known technical skills
+                        were detected.
+
+                    </div>
+
+                `;
+
+            }
+
+            else {
+
+                skills.forEach(
+                    (skill) => {
+
+                        const tag =
+                            document.createElement(
+                                "span"
+                            );
+
+
+                        tag.className =
+                            "job-skill-tag";
+
+
+                        tag.textContent =
+                            skill;
+
+
+                        jobSkillsContainer.appendChild(
+                            tag
+                        );
+
+                    }
+                );
+
+            }
+
+
+            /* =============================================
+               SHOW RESULTS
+            ============================================= */
+
+            jobResults.classList.remove(
+                "hidden"
+            );
+
+
+            showToast(
+                "Job description analyzed successfully."
+            );
+
+
+            /* =============================================
+               SCROLL
+            ============================================= */
+
+            setTimeout(
+                () => {
+
+                    jobResults.scrollIntoView({
+                        behavior: "smooth",
+                        block: "start"
+                    });
+
+                },
+                200
+            );
+
+        }
+
+
+        catch (error) {
+
+            console.error(
+                "HIRELENS JOB ERROR:",
+                error
+            );
+
+
+            showToast(
+                error.message
+            );
+
+        }
+
+
+        finally {
+
+            jobAnalyzeButton.disabled =
+                false;
+
+
+            jobAnalyzeButton.innerHTML =
+                "✦ Analyze Job Description <span>→</span>";
+
+        }
+
+    }
+);
+
+
+/* =========================================================
    COPY EXTRACTED TEXT
-   ========================================================= */
+========================================================= */
 
 copyButton.addEventListener(
     "click",
     async () => {
 
-        if (!extractedResumeText) {
+        if (
+            !extractedResumeText
+        ) {
 
             showToast(
                 "No extracted text available."
@@ -778,9 +1154,11 @@ copyButton.addEventListener(
 
         try {
 
-            await navigator.clipboard.writeText(
-                extractedResumeText
-            );
+            await navigator
+                .clipboard
+                .writeText(
+                    extractedResumeText
+                );
 
 
             showToast(
@@ -810,13 +1188,15 @@ copyButton.addEventListener(
 
 /* =========================================================
    DOWNLOAD EXTRACTED TEXT
-   ========================================================= */
+========================================================= */
 
 downloadButton.addEventListener(
     "click",
     () => {
 
-        if (!extractedResumeText) {
+        if (
+            !extractedResumeText
+        ) {
 
             showToast(
                 "No extracted text available."
@@ -829,19 +1209,26 @@ downloadButton.addEventListener(
 
         const blob =
             new Blob(
-                [extractedResumeText],
+                [
+                    extractedResumeText
+                ],
                 {
-                    type: "text/plain"
+                    type:
+                        "text/plain"
                 }
             );
 
 
         const url =
-            URL.createObjectURL(blob);
+            URL.createObjectURL(
+                blob
+            );
 
 
         const link =
-            document.createElement("a");
+            document.createElement(
+                "a"
+            );
 
 
         link.href =
