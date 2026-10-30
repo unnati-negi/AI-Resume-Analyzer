@@ -1,0 +1,63 @@
+
+[
+  {
+    "id": 1,
+    "resume_text": "Developed machine learning models using Python, pandas, and scikit-learn. Built data preprocessing pipelines and evaluated model performance.",
+    "job_description": "Seeking a candidate experienced in Python programming, machine learning, data preprocessing, and model evaluation.",
+    "relevant": 1
+  },
+  {
+    "id": 2,
+    "resume_text": "Built REST APIs using Flask, integrated PostgreSQL, and tested endpoints. Used Git for version control.",
+    "job_description": "Looking for a backend developer experienced in Flask, REST API development, PostgreSQL, and Git.",
+    "relevant": 1
+  },
+  {
+    "id": 3,
+    "resume_text": "Created interactive React interfaces using JavaScript, HTML, and CSS. Worked on responsive web design.",
+    "job_description": "Seeking a frontend developer with React, JavaScript, HTML, and CSS experience.",
+    "relevant": 1
+  },
+  {
+    "id": 4,
+    "resume_text": "Developed CNN models for image classification using TensorFlow and Python. Evaluated performance on image datasets.",
+    "job_description": "Looking for a deep learning candidate with CNN, image classification, and TensorFlow experience.",
+    "relevant": 1
+  },
+  {
+    "id": 5,
+    "resume_text": "Designed SQL tables, wrote joins and subqueries, and created reports from relational databases.",
+    "job_description": "Seeking a database developer experienced in SQL queries, relational database design, and query optimization.",
+    "relevant": 1
+  },
+  {
+    "id": 6,
+    "resume_text": "Created responsive websites using HTML, CSS, and JavaScript. Added interactive features and tested browser compatibility.",
+    "job_description": "Seeking an AWS cloud engineer with experience in EC2, S3, IAM, and cloud deployment.",
+    "relevant": 0
+  },
+  {
+    "id": 7,
+    "resume_text": "Implemented sorting algorithms, graph traversal, binary search, and dynamic programming in Java.",
+    "job_description": "Looking for a graphic designer experienced in branding, typography, illustration, and visual identity.",
+    "relevant": 0
+  },
+  {
+    "id": 8,
+    "resume_text": "Managed PostgreSQL databases, optimized SQL queries, and developed Flask backend services.",
+    "job_description": "Seeking a video editor experienced in color grading, motion graphics, and audio production.",
+    "relevant": 0
+  },
+  {
+    "id": 9,
+    "resume_text": "Built machine learning models and analyzed datasets using Python and pandas.",
+    "job_description": "Seeking an Android developer experienced in Kotlin, Android SDK, mobile UI, and application lifecycle management.",
+    "relevant": 0
+  },
+  {
+    "id": 10,
+    "resume_text": "Developed Docker containers and deployed web applications. Used Git and CI/CD pipelines.",
+    "job_description": "Seeking a civil engineer experienced in structural design, AutoCAD, construction planning, and site supervision.",
+    "relevant": 0
+  }
+]

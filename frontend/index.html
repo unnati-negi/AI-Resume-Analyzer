@@ -1,701 +1,260 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#f5f9f8">
+    <title>HireLens - AI Resume Analyzer</title>
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
 
-    <title>HireLens — AI Resume Analyzer</title>
-
-    <link
-        rel="preconnect"
-        href="https://fonts.googleapis.com"
-    >
-
-    <link
-        rel="preconnect"
-        href="https://fonts.gstatic.com"
-        crossorigin
-    >
-
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap"
-        rel="stylesheet"
-    >
-
-    <link
-        rel="stylesheet"
-        href="/style.css"
-    >
-
+    <link rel="stylesheet" href="/style.css">
 </head>
-
-
 <body>
 
-    <!-- =====================================================
-         NAVIGATION
-    ====================================================== -->
-
-    <header class="navbar">
-
-        <div class="nav-container">
-
-            <a
-                href="/"
-                class="brand"
-            >
-                Hire<span>Lens</span>
-            </a>
-
-
-            <div class="nav-badge">
-
-                <span class="status-dot"></span>
-
-                AI Resume Analyzer
-
-            </div>
-
-        </div>
-
-    </header>
-
-
-    <!-- =====================================================
-         MAIN
-    ====================================================== -->
-
-    <main class="main-container">
-
-
-        <!-- =================================================
-             HERO
-        ================================================== -->
-
-        <section class="hero">
-
-            <div class="eyebrow">
-
-                <span>✦</span>
-
-                SMART RESUME ANALYSIS
-
-            </div>
-
-
-            <h1>
-
-                Find out how well your resume
-                <span>fits the job.</span>
-
-            </h1>
-
-
-            <p class="hero-description">
-
-                Upload your resume and add a job description.
-                HireLens analyzes your skills and helps identify
-                how well your profile matches the role.
-
-            </p>
-
-        </section>
-
-
-        <!-- =================================================
-             INPUT AREA
-        ================================================== -->
-
-        <section class="input-grid">
-
-
-            <!-- =============================================
-                 RESUME CARD
-            ============================================== -->
-
-            <div class="card resume-card">
-
-                <div class="card-header">
-
-                    <div>
-
-                        <div class="card-number">
-                            01
-                        </div>
-
-                        <h2>
-                            Upload your resume
-                        </h2>
-
-                        <p>
-                            Upload your resume as a PDF.
-                        </p>
-
-                    </div>
-
-                </div>
-
-
-                <!-- Upload area -->
-
-                <div
-                    class="drop-zone"
-                    id="dropZone"
-                >
-
-                    <input
-                        type="file"
-                        id="resumeFile"
-                        accept=".pdf,application/pdf"
-                        hidden
-                    >
-
-
-                    <div class="upload-icon">
-                        ↑
-                    </div>
-
-
-                    <h3>
-                        Drag & drop your resume
-                    </h3>
-
-
-                    <p>
-
-                        or
-
-                        <button
-                            type="button"
-                            id="browseButton"
-                            class="browse-button"
-                        >
-                            browse files
-                        </button>
-
-                    </p>
-
-
-                    <span class="upload-limit">
-                        Maximum file size: 10 MB
-                    </span>
-
-                </div>
-
-
-                <!-- Selected file -->
-
-                <div
-                    class="file-preview hidden"
-                    id="filePreview"
-                >
-
-                    <div class="pdf-icon">
-                        PDF
-                    </div>
-
-
-                    <div class="file-information">
-
-                        <strong id="fileName">
-                            resume.pdf
-                        </strong>
-
-                        <span id="fileSize">
-                            0 KB
-                        </span>
-
-                    </div>
-
-
-                    <button
-                        type="button"
-                        class="remove-file"
-                        id="removeFile"
-                        aria-label="Remove resume"
-                    >
-                        ×
-                    </button>
-
-                </div>
-
-
-                <!-- Upload status -->
-
-                <div
-                    class="upload-status hidden"
-                    id="uploadStatus"
-                ></div>
-
-            </div>
-
-
-
-            <!-- =============================================
-                 JOB DESCRIPTION CARD
-            ============================================== -->
-
-            <div class="card job-card">
-
-                <div class="card-header">
-
-                    <div>
-
-                        <div class="card-number">
-                            02
-                        </div>
-
-                        <h2>
-                            Job description
-                        </h2>
-
-                        <p>
-                            Paste the job description you want
-                            to match against.
-                        </p>
-
-                    </div>
-
-                </div>
-
-
-                <textarea
-                    id="jobDescription"
-                    maxlength="5000"
-                    placeholder="Paste the job description here...
-
-Example:
-
-We are looking for a Python developer with experience in Flask, SQL, REST APIs and machine learning..."
-                ></textarea>
-
-
-                <div class="textarea-footer">
-
-                    <span>
-                        Add the complete job description
-                    </span>
-
-                    <span id="charCount">
-                        0 / 5000
-                    </span>
-
-                </div>
-
-
-                <div class="info-box">
-
-                    <span>✦</span>
-
-                    A detailed job description gives the AI
-                    more context for accurate matching.
-
-                </div>
-
-
-                <button
-                    type="button"
-                    class="job-analyze-button"
-                    id="jobAnalyzeButton"
-                >
-                    ✦ Analyze Job Description
-                    <span>→</span>
-                </button>
-
-            </div>
-
-        </section>
-
-
-
-        <!-- =================================================
-             ANALYZE RESUME BUTTON
-        ================================================== -->
-
-        <div class="main-action">
-
-            <button
-                type="button"
-                class="analyze-button"
-                id="analyzeButton"
-                disabled
-            >
-
-                <span>
-                    ✦
-                </span>
-
-                Analyze Resume
-
-                <span>
-                    →
-                </span>
-
-            </button>
-
-
-            <p>
-                Upload a resume to begin analysis
-            </p>
-
-        </div>
-
-
-
-        <!-- =================================================
-             JOB ANALYSIS RESULTS
-        ================================================== -->
-
-        <section
-            class="job-results hidden"
-            id="jobResults"
-        >
-
-            <div class="job-results-header">
-
-                <div>
-
-                    <div class="eyebrow">
-
-                        <span>✦</span>
-
-                        JOB ANALYSIS COMPLETE
-
-                    </div>
-
-
-                    <h2>
-                        Job requirements
-                    </h2>
-
-
-                    <p>
-                        Skills identified from the job
-                        description.
-                    </p>
-
-                </div>
-
-
-                <div class="job-skill-count">
-
-                    <span>
-                        Required skills
-                    </span>
-
-                    <strong id="jobSkillCount">
-                        0
-                    </strong>
-
-                </div>
-
-            </div>
-
-
-            <div
-                class="job-skills-container"
-                id="jobSkillsContainer"
-            ></div>
-
-        </section>
-
-
-
-        <!-- =================================================
-             RESUME ANALYSIS RESULTS
-        ================================================== -->
-
-        <section
-            class="results-section hidden"
-            id="results-section"
-        >
-
-            <div class="results-header">
-
-                <div>
-
-                    <div class="eyebrow">
-
-                        <span>✦</span>
-
-                        AI ANALYSIS COMPLETE
-
-                    </div>
-
-
-                    <h2>
-                        Resume analysis
-                    </h2>
-
-                </div>
-
-
-                <button
-                    type="button"
-                    class="secondary-button"
-                    id="copyButton"
-                >
-                    Copy text
-                </button>
-
-            </div>
-
-
-            <!-- Resume summary -->
-
-            <div class="analysis-summary">
-
-
-                <div class="summary-card">
-
-                    <div class="summary-icon">
-                        ✦
-                    </div>
-
-
-                    <div>
-
-                        <span>
-                            Skills detected
-                        </span>
-
-                        <strong id="skillCount">
-                            0
-                        </strong>
-
-                    </div>
-
-                </div>
-
-
-
-                <div class="summary-card">
-
-                    <div class="summary-icon blue-summary">
-                        ✓
-                    </div>
-
-
-                    <div>
-
-                        <span>
-                            Resume status
-                        </span>
-
-                        <strong>
-                            Analyzed
-                        </strong>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-
-            <!-- Skills -->
-
-            <div class="skills-card">
-
-                <div class="skills-header">
-
-                    <div>
-
-                        <h3>
-                            Skills detected
-                        </h3>
-
-                        <p>
-                            Technical skills identified
-                            from your resume.
-                        </p>
-
-                    </div>
-
-                </div>
-
-
-                <div
-                    class="skills-container"
-                    id="skillsContainer"
-                ></div>
-
-            </div>
-
-
-
-            <!-- Extracted text -->
-
-            <div class="results-card">
-
-                <div class="results-toolbar">
-
-                    <div class="toolbar-left">
-
-                        <span class="live-dot"></span>
-
-                        <span>
-                            Extracted resume text
-                        </span>
-
-                    </div>
-
-
-                    <button
-                        type="button"
-                        class="download-button"
-                        id="downloadButton"
-                    >
-                        ↓ Download
-                    </button>
-
-                </div>
-
-
-                <div class="text-preview">
-
-                    <pre id="extractedText"></pre>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-
-        <!-- =================================================
-             HOW IT WORKS
-        ================================================== -->
-
-        <section class="how-it-works">
-
-            <div class="eyebrow">
-
-                <span>✦</span>
-
-                HOW IT WORKS
-
-            </div>
-
-
-            <h2>
-                From resume to insight.
-            </h2>
-
-
-            <div class="steps-grid">
-
-
-                <div class="step-card">
-
-                    <span class="step-number">
-                        01
-                    </span>
-
-                    <h3>
-                        Upload
-                    </h3>
-
-                    <p>
-                        Upload your resume as a PDF.
-                    </p>
-
-                </div>
-
-
-                <div class="step-card">
-
-                    <span class="step-number">
-                        02
-                    </span>
-
-                    <h3>
-                        Analyze
-                    </h3>
-
-                    <p>
-                        HireLens extracts text and skills
-                        using NLP.
-                    </p>
-
-                </div>
-
-
-                <div class="step-card">
-
-                    <span class="step-number">
-                        03
-                    </span>
-
-                    <h3>
-                        Match
-                    </h3>
-
-                    <p>
-                        Compare your profile with the
-                        requirements of a job.
-                    </p>
-
-                </div>
-
-
-            </div>
-
-        </section>
-
-    </main>
-
-
-
-    <!-- =====================================================
-         FOOTER
-    ====================================================== -->
-
-    <footer class="footer">
-
-        <div>
-            HireLens
-        </div>
-
-        <div>
-            AI-powered resume analysis
-        </div>
-
-    </footer>
-
-
-
-    <!-- =====================================================
-         TOAST
-    ====================================================== -->
-
-    <div
-        class="toast"
-        id="toast"
-    >
-
-        <span class="toast-icon">
-            ✓
-        </span>
-
-        <span id="toastMessage">
-            Done
-        </span>
-
+<header class="navbar">
+    <div class="nav-container">
+        <a href="/" class="brand">Hire<span>Lens</span></a>
+        <span class="nav-label">AI Resume Analyzer</span>
     </div>
+</header>
 
+<main class="main-container">
 
+    <section class="hero">
+        <p class="eyebrow">RESUME AND JOB ANALYSIS</p>
+        <h1>Find out how well your resume <span>fits the job.</span></h1>
+        <p class="hero-description">
+            Upload your resume and enter a job description.
+            HireLens compares skills, identifies potential gaps,
+            and provides recommendations to improve your profile.
+        </p>
+    </section>
 
-    <script src="/script.js"></script>
+    <section class="input-grid">
 
+        <div class="card">
+            <div class="card-header">
+                <p class="card-number">01</p>
+                <h2>Upload your resume</h2>
+                <p>Choose a PDF resume, up to 10 MB.</p>
+            </div>
+
+            <div class="drop-zone" id="dropZone" tabindex="0" role="button"
+                 aria-label="Choose or drop a PDF resume">
+                <input type="file" id="resumeFile"
+                       accept=".pdf,application/pdf" hidden>
+
+                <div class="upload-label">PDF</div>
+                <h3>Drag and drop your resume</h3>
+                <p>or <button type="button" id="browseButton"
+                              class="browse-button">browse files</button></p>
+                <p class="upload-limit">PDF format · Maximum 10 MB</p>
+            </div>
+
+            <div class="file-preview hidden" id="filePreview">
+                <span class="pdf-label">PDF</span>
+                <div class="file-information">
+                    <strong id="fileName">resume.pdf</strong>
+                    <span id="fileSize">0 KB</span>
+                </div>
+                <button type="button" class="remove-file" id="removeFile">
+                    Remove
+                </button>
+            </div>
+
+            <p class="upload-status hidden" id="uploadStatus"
+               role="status" aria-live="polite"></p>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <p class="card-number">02</p>
+                <h2>Job description</h2>
+                <p>Paste the job description you want to compare against.</p>
+            </div>
+
+            <textarea id="jobDescription" maxlength="5000"
+                placeholder="Paste the complete job description here..."
+                aria-label="Job description"></textarea>
+
+            <div class="textarea-footer">
+                <span>Include responsibilities and qualifications</span>
+                <span id="charCount">0 / 5000</span>
+            </div>
+
+            <div class="info-box">
+                Include required skills and preferred qualifications
+                for a more useful comparison.
+            </div>
+
+            <button type="button" class="job-analyze-button"
+                    id="jobAnalyzeButton">
+                Analyze Job Description
+            </button>
+        </div>
+
+    </section>
+
+    <section class="main-action">
+        <button type="button" class="analyze-button"
+                id="analyzeButton" disabled>
+            Analyze Resume
+        </button>
+        <p id="mainActionHint">Upload a resume to begin analysis.</p>
+    </section>
+
+    <section class="job-results hidden" id="jobResults">
+        <div class="job-results-header">
+            <div>
+                <p class="eyebrow">JOB ANALYSIS</p>
+                <h2>Job requirements</h2>
+                <p>Technical skills detected in the job description.</p>
+            </div>
+
+            <div class="job-skill-count">
+                <span>Detected skills</span>
+                <strong id="jobSkillCount">0</strong>
+            </div>
+        </div>
+
+        <div class="job-skills-container" id="jobSkillsContainer"></div>
+
+        <div class="requirement-groups">
+            <div>
+                <h3>Required skills</h3>
+                <div id="requiredSkillsContainer" class="skills-container"></div>
+            </div>
+            <div>
+                <h3>Preferred skills</h3>
+                <div id="preferredSkillsContainer" class="skills-container"></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="results-section hidden" id="results-section">
+        <div class="results-header">
+            <div>
+                <p class="eyebrow">RESUME ANALYSIS</p>
+                <h2>Resume analysis</h2>
+            </div>
+            <button type="button" class="secondary-button" id="copyButton">
+                Copy extracted text
+            </button>
+        </div>
+
+        <div class="analysis-summary">
+            <div class="summary-card">
+                <span class="summary-label">Skills detected</span>
+                <strong id="skillCount">0</strong>
+            </div>
+            <div class="summary-card">
+                <span class="summary-label">Resume status</span>
+                <strong id="resumeStatus">Not analyzed</strong>
+            </div>
+        </div>
+
+        <div class="skills-card">
+            <div class="skills-header">
+                <h3>Skills detected</h3>
+                <p>Technical skills identified from your resume.</p>
+            </div>
+            <div class="skills-container" id="skillsContainer"></div>
+        </div>
+
+        <div class="results-card">
+            <div class="results-toolbar">
+                <span class="toolbar-left">Extracted resume text</span>
+                <button type="button" class="download-button" id="downloadButton">
+                    Download text
+                </button>
+            </div>
+            <div class="text-preview">
+                <pre id="extractedText"></pre>
+            </div>
+        </div>
+    </section>
+
+    <section class="match-results hidden" id="matchResults"
+             aria-live="polite">
+        <div class="results-header">
+            <div>
+                <p class="eyebrow">MATCH ANALYSIS</p>
+                <h2>Resume-job match results</h2>
+                <p class="section-description">
+                    The score reflects the matching rules and skills
+                    detected by the current system.
+                </p>
+            </div>
+        </div>
+
+        <div class="score-panel">
+            <span class="summary-label">Overall compatibility</span>
+            <strong id="matchScoreValue">--</strong>
+            <p id="matchInterpretation">
+                Run matching to view your results.
+            </p>
+        </div>
+
+        <div class="match-grid">
+            <div class="match-card">
+                <h3>Matched skills</h3>
+                <ul id="matchedSkillsList"></ul>
+            </div>
+
+            <div class="match-card">
+                <h3>Missing skills</h3>
+                <ul id="missingSkillsList"></ul>
+            </div>
+
+            <div class="match-card">
+                <h3>Recommendations</h3>
+                <ul id="recommendationsList"></ul>
+            </div>
+        </div>
+
+        <p class="gap-summary" id="skillGapSummary"></p>
+        <p class="semantic-status" id="semanticStatus"></p>
+    </section>
+
+    <section class="how-it-works">
+        <p class="eyebrow">WORKFLOW</p>
+        <h2>From resume to insight.</h2>
+
+        <div class="steps-grid">
+            <div class="step-card">
+                <span class="step-number">01</span>
+                <h3>Upload</h3>
+                <p>Upload your resume as a PDF.</p>
+            </div>
+
+            <div class="step-card">
+                <span class="step-number">02</span>
+                <h3>Analyze</h3>
+                <p>Extract resume text and recognized skills.</p>
+            </div>
+
+            <div class="step-card">
+                <span class="step-number">03</span>
+                <h3>Match</h3>
+                <p>Compare your profile with job requirements.</p>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<footer class="footer">
+    <span>HireLens</span>
+    <span>AI-powered resume analysis</span>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite">
+    <span id="toastMessage"></span>
+</div>
+
+<script src="/script.js"></script>
 </body>
-
 </html>

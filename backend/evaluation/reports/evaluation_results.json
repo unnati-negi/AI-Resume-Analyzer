@@ -1,0 +1,346 @@
+{
+    "Keyword": {
+        "threshold": 30.0,
+        "metrics": {
+            "accuracy": 0.9,
+            "precision": 1.0,
+            "recall": 0.8,
+            "f1_score": 0.8889,
+            "true_positive": 4,
+            "true_negative": 5,
+            "false_positive": 0,
+            "false_negative": 1,
+            "total_samples": 10
+        },
+        "details": [
+            {
+                "id": 1,
+                "actual": 1,
+                "predicted": 1,
+                "score": 46.15,
+                "correct": true
+            },
+            {
+                "id": 2,
+                "actual": 1,
+                "predicted": 1,
+                "score": 33.33,
+                "correct": true
+            },
+            {
+                "id": 3,
+                "actual": 1,
+                "predicted": 1,
+                "score": 50.0,
+                "correct": true
+            },
+            {
+                "id": 4,
+                "actual": 1,
+                "predicted": 1,
+                "score": 44.44,
+                "correct": true
+            },
+            {
+                "id": 5,
+                "actual": 1,
+                "predicted": 0,
+                "score": 16.67,
+                "correct": false
+            },
+            {
+                "id": 6,
+                "actual": 0,
+                "predicted": 0,
+                "score": 0.0,
+                "correct": true
+            },
+            {
+                "id": 7,
+                "actual": 0,
+                "predicted": 0,
+                "score": 9.09,
+                "correct": true
+            },
+            {
+                "id": 8,
+                "actual": 0,
+                "predicted": 0,
+                "score": 0.0,
+                "correct": true
+            },
+            {
+                "id": 9,
+                "actual": 0,
+                "predicted": 0,
+                "score": 0.0,
+                "correct": true
+            },
+            {
+                "id": 10,
+                "actual": 0,
+                "predicted": 0,
+                "score": 0.0,
+                "correct": true
+            }
+        ]
+    },
+    "TF-IDF": {
+        "threshold": 20.0,
+        "metrics": {
+            "accuracy": 0.9,
+            "precision": 1.0,
+            "recall": 0.8,
+            "f1_score": 0.8889,
+            "true_positive": 4,
+            "true_negative": 5,
+            "false_positive": 0,
+            "false_negative": 1,
+            "total_samples": 10
+        },
+        "details": [
+            {
+                "id": 1,
+                "actual": 1,
+                "predicted": 1,
+                "score": 33.78,
+                "correct": true
+            },
+            {
+                "id": 2,
+                "actual": 1,
+                "predicted": 1,
+                "score": 27.63,
+                "correct": true
+            },
+            {
+                "id": 3,
+                "actual": 1,
+                "predicted": 1,
+                "score": 27.16,
+                "correct": true
+            },
+            {
+                "id": 4,
+                "actual": 1,
+                "predicted": 1,
+                "score": 33.27,
+                "correct": true
+            },
+            {
+                "id": 5,
+                "actual": 1,
+                "predicted": 0,
+                "score": 15.87,
+                "correct": false
+            },
+            {
+                "id": 6,
+                "actual": 0,
+                "predicted": 0,
+                "score": 6.63,
+                "correct": true
+            },
+            {
+                "id": 7,
+                "actual": 0,
+                "predicted": 0,
+                "score": 9.19,
+                "correct": true
+            },
+            {
+                "id": 8,
+                "actual": 0,
+                "predicted": 0,
+                "score": 4.6,
+                "correct": true
+            },
+            {
+                "id": 9,
+                "actual": 0,
+                "predicted": 0,
+                "score": 7.51,
+                "correct": true
+            },
+            {
+                "id": 10,
+                "actual": 0,
+                "predicted": 0,
+                "score": 7.93,
+                "correct": true
+            }
+        ]
+    },
+    "HireLens": {
+        "threshold": 50.0,
+        "metrics": {
+            "accuracy": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1_score": 1.0,
+            "true_positive": 5,
+            "true_negative": 5,
+            "false_positive": 0,
+            "false_negative": 0,
+            "total_samples": 10
+        },
+        "details": [
+            {
+                "id": 1,
+                "actual": 1,
+                "predicted": 1,
+                "score": 100.0,
+                "correct": true
+            },
+            {
+                "id": 2,
+                "actual": 1,
+                "predicted": 1,
+                "score": 80.0,
+                "correct": true
+            },
+            {
+                "id": 3,
+                "actual": 1,
+                "predicted": 1,
+                "score": 100.0,
+                "correct": true
+            },
+            {
+                "id": 4,
+                "actual": 1,
+                "predicted": 1,
+                "score": 66.67,
+                "correct": true
+            },
+            {
+                "id": 5,
+                "actual": 1,
+                "predicted": 1,
+                "score": 100.0,
+                "correct": true
+            },
+            {
+                "id": 6,
+                "actual": 0,
+                "predicted": 0,
+                "score": 0.0,
+                "correct": true
+            },
+            {
+                "id": 7,
+                "actual": 0,
+                "predicted": 0,
+                "score": 0.0,
+                "correct": true
+            },
+            {
+                "id": 8,
+                "actual": 0,
+                "predicted": 0,
+                "score": 0.0,
+                "correct": true
+            },
+            {
+                "id": 9,
+                "actual": 0,
+                "predicted": 0,
+                "score": 0.0,
+                "correct": true
+            },
+            {
+                "id": 10,
+                "actual": 0,
+                "predicted": 0,
+                "score": 0.0,
+                "correct": true
+            }
+        ]
+    },
+    "Semantic": {
+        "threshold": 50.0,
+        "metrics": {
+            "accuracy": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1_score": 1.0,
+            "true_positive": 5,
+            "true_negative": 5,
+            "false_positive": 0,
+            "false_negative": 0,
+            "total_samples": 10
+        },
+        "details": [
+            {
+                "id": 1,
+                "actual": 1,
+                "predicted": 1,
+                "score": 60.65,
+                "correct": true
+            },
+            {
+                "id": 2,
+                "actual": 1,
+                "predicted": 1,
+                "score": 68.19,
+                "correct": true
+            },
+            {
+                "id": 3,
+                "actual": 1,
+                "predicted": 1,
+                "score": 57.52,
+                "correct": true
+            },
+            {
+                "id": 4,
+                "actual": 1,
+                "predicted": 1,
+                "score": 67.32,
+                "correct": true
+            },
+            {
+                "id": 5,
+                "actual": 1,
+                "predicted": 1,
+                "score": 59.9,
+                "correct": true
+            },
+            {
+                "id": 6,
+                "actual": 0,
+                "predicted": 0,
+                "score": 8.35,
+                "correct": true
+            },
+            {
+                "id": 7,
+                "actual": 0,
+                "predicted": 0,
+                "score": 7.59,
+                "correct": true
+            },
+            {
+                "id": 8,
+                "actual": 0,
+                "predicted": 0,
+                "score": 18.13,
+                "correct": true
+            },
+            {
+                "id": 9,
+                "actual": 0,
+                "predicted": 0,
+                "score": 9.14,
+                "correct": true
+            },
+            {
+                "id": 10,
+                "actual": 0,
+                "predicted": 0,
+                "score": 16.57,
+                "correct": true
+            }
+        ]
+    }
+}

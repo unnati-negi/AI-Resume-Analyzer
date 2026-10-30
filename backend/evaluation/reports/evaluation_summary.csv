@@ -1,0 +1,5 @@
+Method,Threshold,Accuracy,Precision,Recall,F1 Score,True Positive,True Negative,False Positive,False Negative,Total Samples
+Keyword,30.0,0.9,1.0,0.8,0.8889,4,5,0,1,10
+TF-IDF,20.0,0.9,1.0,0.8,0.8889,4,5,0,1,10
+HireLens,50.0,1.0,1.0,1.0,1.0,5,5,0,0,10
+Semantic,50.0,1.0,1.0,1.0,1.0,5,5,0,0,10
